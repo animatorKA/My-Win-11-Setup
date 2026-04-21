@@ -15,7 +15,9 @@
 
 ## 🖼️ Screenshot
 
-> _Screenshot coming soon._
+<p align="center">
+  <img src="Screenshots/Screenshot 2026-04-21 161000.png" alt="Desktop Preview" width="100%" />
+</p>
 
 ---
 
