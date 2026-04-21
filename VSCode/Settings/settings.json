@@ -34,8 +34,7 @@
     },
     "editor.quickSuggestions": {
         "comments": "on",
-        "strings": "inline"
-    ],
+        "strings": "inline",
     "workbench.activityBar.location": "top",
     "workbench.sideBar.location": "right",
     "window.menuBarVisibility": "compact",
