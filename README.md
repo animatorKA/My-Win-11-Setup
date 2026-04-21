@@ -1,7 +1,8 @@
 <h1 align="center">✨ My Windows 11 Setup ✨</h1>
 
 <p align="center">
-  A complete guide to my Windows 11 customization — from the YASB status bar to every little tweak that makes it clean, aesthetic, and productive.
+  My full Windows 11 setup — from YASB bar to Komorebi and Oh My Posh.<br>
+  Fonts, mods, configs, and guides, all in one place.
 </p>
 
 <p align="center">
@@ -23,15 +24,15 @@
 | Category | App |
 |---|---|
 | 📊 Status Bar | [YASB](#-yasb) |
-| 🪟 Window Manager | [GlazeWM](#-glazewm) |
+| 🪟 Window Manager | [Komorebi](#-komorebi) |
 | 🔍 App Launcher | [Flow Launcher](#-flow-launcher) |
 | 🖥️ Taskbar | [Windhawk](#-windhawk) |
 | 📝 Text Editor | [VSCode](#-vscode) |
 | 💻 Terminal | [Windows Terminal + Fastfetch](#-windows-terminal--fastfetch) |
-| 🌐 Browser | [Brave](#-brave) |
 | 🐚 Shell Prompt | [Oh My Posh](#-oh-my-posh) |
 | 🎵 Audio Visualizer | [Cava](#-cava) |
 | 🎧 Music Player | [Spotify](#-spotify) |
+| 💬 Discord | [Discord](#-discord) |
 | 📒 Note Taking | [Notesnook](#-notesnook) |
 | 🎥 Screen Recording | [OBS Studio](#-obs-studio) |
 | 📁 File Explorer Mod | [ExplorerBlurMica](#-explorerblurmica) |
@@ -60,27 +61,27 @@ A highly configurable Windows status bar written in Python.
 You can follow the steps below, or watch the [**setup video**](https://www.youtube.com/watch?v=your-video-id).
 
 1. Install [**YASB**](https://github.com/amnweb/yasb).
-2. Copy the config files from [**this repo**](https://github.com/SleepyCatHey/Ultimate-Win11-Setup/tree/main/YASB).
+2. Copy the config files from [**this repo**](https://github.com/animatorKA/My-Win-11-Setup/tree/main/YASB).
 3. Replace the contents of your existing YASB config with the one you just copied.
 4. Restart **YASB** for the changes to take effect.
 
 ---
 
-## 🪟 GlazeWM
+## 🪟 Komorebi
 
 > [!NOTE]
-> If you're using my config, Zebar won't work since I use GlazeWM with YASB instead. If you want to use Zebar, add back the two lines I removed from the default config.
+> I use Komorebi alongside YASB as my status bar. If you'd prefer a different bar (e.g. Zebar), you may need to adjust the configuration accordingly.
 
-GlazeWM lets you easily organize windows and adjust their layout on the fly using keyboard-driven commands.
+Komorebi is a tiling window manager for Windows that lets you organize and manage windows using keyboard-driven commands and configurable layouts.
 
 **⚙️ Installation:**
 
 You can follow the steps below, or watch the [**setup video**](https://youtu.be/b57zFm3nVxA).
 
-1. Install [**GlazeWM**](https://github.com/glzr-io/glazewm).
-2. Copy the config file from [**this repo**](https://github.com/SleepyCatHey/Ultimate-Win11-Setup/tree/main/GlazeWM).
-3. Replace the contents of your existing GlazeWM config with the one you just copied.
-4. Restart **GlazeWM** for the changes to take effect.
+1. Install [**Komorebi**](https://github.com/LGUG2Z/komorebi).
+2. Copy the config file from [**this repo**](https://github.com/animatorKA/My-Win-11-Setup/tree/main/Komorebi).
+3. Replace the contents of your existing Komorebi config with the one you just copied.
+4. Restart **Komorebi** for the changes to take effect.
 
 ---
 
@@ -96,7 +97,7 @@ Windhawk makes it easier to customize Windows programs with community-made mods.
 You can follow the steps below, or watch the [**setup video**](https://youtu.be/b57zFm3nVxA) for more detail on taskbar customization.
 
 1. Install [**Windhawk**](https://windhawk.net/).
-2. Copy the config file from [**this repo**](https://github.com/SleepyCatHey/Ultimate-Win11-Setup/tree/main/Windhawk).
+2. Copy the config file from [**this repo**](https://github.com/animatorKA/My-Win-11-Setup/tree/main/Windhawk).
 3. Paste the config into the **Advanced** section of the relevant Windhawk mod.
 4. Click **Save settings** for the changes to take effect.
 
@@ -109,7 +110,7 @@ A fast file search and app launcher for Windows.
 **⚙️ Installation:**
 
 1. Install [**Flow Launcher**](https://www.flowlauncher.com/).
-2. Download the theme file from [**this repo**](https://github.com/SleepyCatHey/Ultimate-Win11-Setup/tree/main/Flow%20Launcher).
+2. Download the theme file from [**this repo**](https://github.com/animatorKA/My-Win-11-Setup/tree/main/Flow%20Launcher).
 3. Open Flow Launcher's **Settings → Appearance**, then click **Open Theme Folder**.
 4. Move the downloaded theme file into that folder and restart Flow Launcher.
 5. Back in **Settings → Appearance**, select your Catppuccin flavor from the theme list.
@@ -125,16 +126,14 @@ A fast file search and app launcher for Windows.
 >
 > If you only want the Fastfetch config, just paste it where your existing Fastfetch config is located.
 >
-> If you have an existing PowerShell profile, manually add your own paths and preferences rather than overwriting it entirely.
+> If you have an existing PowerShell profile, manually merge in your own paths and preferences rather than overwriting it entirely.
 >
 > **"Execution of scripts is disabled on this system"** — Don't panic. Open PowerShell as Administrator and run:
 > ```powershell
 > Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 > ```
 >
-> **ASCII art not showing?** Try changing `"source": "C:/Users/%USERPROFILE%/.config/fastfetch/ascii.txt"` to `"source": "%USERPROFILE%/.config/fastfetch/ascii.txt"`. ([credit](https://github.com/SleepyCatHey/Ultimate-Win11-Setup/issues/1#issue-3498937609))
->
-> **Want Fastfetch in CMD too?** Check out [this issue](https://github.com/SleepyCatHey/Ultimate-Win11-Setup/issues/9#issue-3958846174). Thanks to [**Augtive85YT**](https://github.com/Augtive85YT)!
+> **ASCII art not showing?** Try changing `"source": "C:/Users/%USERPROFILE%/.config/fastfetch/ascii.txt"` to `"source": "%USERPROFILE%/.config/fastfetch/ascii.txt"`.
 
 Fastfetch is a neofetch-like system information tool written in C, focused on performance and customizability.
 
@@ -144,53 +143,13 @@ You can follow the steps below, or watch the [**setup video**](https://youtu.be/
 
 1. Install [**Fastfetch**](https://github.com/fastfetch-cli/fastfetch/releases). Windows Terminal should already be installed.
 2. Download configs from this repo:
-   - Terminal config → [Terminal](https://github.com/SleepyCatHey/Ultimate-Win11-Setup/tree/main/Terminal)
-   - PowerShell profile → [PowerShell](https://github.com/SleepyCatHey/Ultimate-Win11-Setup/tree/main/PowerShell)
-   - Fastfetch config → [Fastfetch](https://github.com/SleepyCatHey/Ultimate-Win11-Setup/tree/main/Fastfetch)
+   - Terminal config → [Terminal](https://github.com/animatorKA/My-Win-11-Setup/tree/main/Terminal)
+   - PowerShell profile → [PowerShell](https://github.com/animatorKA/My-Win-11-Setup/tree/main/PowerShell)
+   - Fastfetch config → [Fastfetch](https://github.com/animatorKA/My-Win-11-Setup/tree/main/Fastfetch)
 3. Replace the contents of `settings.json` in your terminal and your PowerShell profile with the downloaded configs.
-4. Create a hidden `.config` folder at `C:\Users\%USERPROFILE%\` and a `fastfetch` subfolder inside it. Paste the Fastfetch config and ASCII art file there.
+4. Create a hidden `.config` folder at `C:\Users\%USERPROFILE%\` with a `fastfetch` subfolder inside. Paste the Fastfetch config and ASCII art file there.
 5. Replace `%USERPROFILE%` in both the Fastfetch config and your PowerShell profile with your actual username.
 6. Restart your terminal — you're done!
-
----
-
-## 📝 VSCode
-
-> [!NOTE]
-> This is just my base VSCode settings. Your setup may look different since I also use a number of extensions alongside it. I'll try to keep the extensions list up to date.
-
-Visual Studio Code is a free, open-source code editor by Microsoft for building and debugging modern web and cloud applications.
-
-**⚙️ Installation:**
-
-1. Install [**VSCode**](https://code.visualstudio.com/).
-2. Copy the config: `VSCode/Settings/settings.json` → `%APPDATA%\Code\User\settings.json`.
-3. Restart **VSCode** for the changes to take effect.
-
-**🔧 Extensions:**
-
-| Extension | Description |
-|---|---|
-| [Catppuccin for VSCode](https://marketplace.visualstudio.com/items?itemName=Catppuccin.catppuccin-vsc) | Soothing pastel theme |
-| [Catppuccin Icons for VSCode](https://marketplace.visualstudio.com/items?itemName=Catppuccin.catppuccin-vsc-icons) | Matching pastel icon theme |
-| [VSCode Pets](https://marketplace.visualstudio.com/items?itemName=tonybaloney.vscode-pets) | Puts a little pet in your editor 🐱 |
-
----
-
-## 🌐 Brave
-
-A privacy-focused browser based on Chromium.
-
-**Features:**
-- Built-in ad and tracker blocking
-- Minimal, clean UI
-- Chromium extension support
-- Good performance and low memory usage
-
-**⚙️ Installation:**
-
-1. Install [**Brave**](https://brave.com/download/).
-2. Apply the Catppuccin theme from the [Chrome Web Store](https://chrome.google.com/webstore/detail/catppuccin-chrome-theme-m/bkkmolkhemgaeaeggcmfbghljjjoofoh).
 
 ---
 
@@ -204,12 +163,13 @@ A prompt theme engine for any shell.
    ```powershell
    winget install JanDeDobbeleer.OhMyPosh -s winget
    ```
-2. Copy the theme config from [**this repo**](https://github.com/SleepyCatHey/Ultimate-Win11-Setup/tree/main/OhMyPosh) to your preferred location.
-3. Add the following to your PowerShell profile, updating the path to match where you saved the theme:
+2. Add the following to your PowerShell profile, updating the path to your preferred theme:
    ```powershell
    oh-my-posh init pwsh --config "C:\path\to\your\theme.omp.json" | Invoke-Expression
    ```
-4. Restart your terminal.
+3. Restart your terminal.
+
+> Browse available themes at [ohmyposh.dev/docs/themes](https://ohmyposh.dev/docs/themes).
 
 ---
 
@@ -220,7 +180,7 @@ A cross-platform terminal-based audio visualizer.
 **⚙️ Installation:**
 
 1. Install [**Cava**](https://github.com/nicowillis/cava-windows) (Windows port).
-2. Copy the config from [**this repo**](https://github.com/SleepyCatHey/Ultimate-Win11-Setup/tree/main/Cava) to `%USERPROFILE%\.config\cava\config`.
+2. Copy the config from [**this repo**](https://github.com/animatorKA/My-Win-11-Setup/tree/main/Cava) to `%USERPROFILE%\.config\cava\config`.
 3. Run `cava` in your terminal.
 
 ---
@@ -238,6 +198,19 @@ Spotify with [**Spicetify**](https://spicetify.app/) for theming support.
    spicetify apply
    ```
    Full theme instructions: [catppuccin/spicetify](https://github.com/catppuccin/spicetify)
+
+---
+
+## 💬 Discord
+
+Discord themed with [**BetterDiscord**](https://betterdiscord.app/) and the Catppuccin Mocha theme.
+
+**⚙️ Installation:**
+
+1. Install [**BetterDiscord**](https://betterdiscord.app/).
+2. Copy the theme file from [**this repo**](https://github.com/animatorKA/My-Win-11-Setup/tree/main/Discord).
+3. Move the theme file to `%APPDATA%\BetterDiscord\themes\`.
+4. Open Discord → **Settings → BetterDiscord → Themes** and enable it.
 
 ---
 
@@ -259,7 +232,30 @@ Free and open-source software for video recording and live streaming.
 **⚙️ Installation:**
 
 1. Install [**OBS Studio**](https://obsproject.com/).
-2. No custom config in this repo — using mostly default settings with a few scene tweaks.
+2. Copy the scene/profile config from [**this repo**](https://github.com/animatorKA/My-Win-11-Setup/tree/main/OBS) into `%APPDATA%\obs-studio\`.
+
+---
+
+## 📝 VSCode
+
+> [!NOTE]
+> This is my base VSCode config. Your setup may look different depending on the extensions you use. I'll keep the list below up to date.
+
+Visual Studio Code is a free, open-source code editor by Microsoft.
+
+**⚙️ Installation:**
+
+1. Install [**VSCode**](https://code.visualstudio.com/).
+2. Copy the config from [**this repo**](https://github.com/animatorKA/My-Win-11-Setup/tree/main/VSCode/Settings) to `%APPDATA%\Code\User\settings.json`.
+3. Restart **VSCode** for the changes to take effect.
+
+**🔧 Extensions:**
+
+| Extension | Description |
+|---|---|
+| [Catppuccin for VSCode](https://marketplace.visualstudio.com/items?itemName=Catppuccin.catppuccin-vsc) | Soothing pastel theme |
+| [Catppuccin Icons for VSCode](https://marketplace.visualstudio.com/items?itemName=Catppuccin.catppuccin-vsc-icons) | Matching pastel icon theme |
+| [VSCode Pets](https://marketplace.visualstudio.com/items?itemName=tonybaloney.vscode-pets) | Puts a little pet in your editor 🐱 |
 
 ---
 
@@ -275,8 +271,8 @@ Adds Blur, Acrylic, or Mica background effects to File Explorer on Windows 10 an
 You can follow the steps below, or watch the [**setup video**](https://youtu.be/gpGeCZXXsbs).
 
 1. Install [**ExplorerBlurMica**](https://github.com/Maplespe/ExplorerBlurMica/releases).
-2. Copy the config from [**this repo**](https://github.com/SleepyCatHey/Ultimate-Win11-Setup/tree/main/File%20Explorer).
-3. Follow the official [**installation instructions**](https://github.com/Maplespe/ExplorerBlurMica?tab=readme-ov-file#install) for the rest.
+2. Copy the config from [**this repo**](https://github.com/animatorKA/My-Win-11-Setup/tree/main/File%20Explorer).
+3. Follow the official [**installation guide**](https://github.com/Maplespe/ExplorerBlurMica?tab=readme-ov-file#install) for the rest.
 
 ---
 
@@ -287,7 +283,7 @@ Other small tools and tweaks I use to round everything out.
 | Tool | Purpose |
 |---|---|
 | [Wallpaper Engine](https://www.wallpaperengine.io/) | Animated and interactive wallpapers |
-| [AutoHotKey](https://www.autohotkey.com/) | Custom keyboard shortcuts and automation scripts |
+| [AutoHotKey](https://www.autohotkey.com/) | Custom keyboard shortcuts and automation |
 | [RoundedTB](https://github.com/torchgm/RoundedTB) | Adds margins and rounded corners to the taskbar |
 
 ---
