@@ -2,253 +2,281 @@ watch_stylesheet: true
 watch_config: true
 debug: false
 update_check: true # Enable automatic update check.
-glazewm:
-  start_command: "glazewm.exe start"
-  stop_command: "glazewm.exe command wm-exit"
-  reload_command: "glazewm.exe command wm-exit && glazewm.exe start"
+komorebi:
+  start_command: "komorebic start --whkd"
+  stop_command: "komorebic stop --whkd"
+  reload_command: "komorebic stop --whkd && komorebic start --whkd"
 bars:
-  primary-bar:
+  status-bar:
     enabled: true
-    screens: ["primary"]
+    screens: ['*']
     class_name: "yasb-bar"
-    alignment:
-      position: "top"
-      center: false
     animation:
       enabled: true
-      duration: 1000
+      duration: 400
+    alignment:
+      position: "top"
+      center: true
     blur_effect:
       enabled: true
       acrylic: true
       dark_mode: true
       round_corners: true
-      round_corners_type: "normal"
-      border_color: "#8dbcff"
+      border_color: white
     window_flags:
-      always_on_top: false
+      always_on_top: true
       windows_app_bar: true
     dimensions:
       width: "100%"
-      height: 26
+      height: 37
     padding:
       top: 3
-      left: 3
+      left: 2
       bottom: 0
-      right: 3
+      right: 2
     widgets:
-      left: [
-        "glazewm_tiling_direction",
-        "glazewm_workspaces",      
-        "active_window"
-      ]
-      center: [
-        "clock"
-      ]
-      right: [
-        "cava",
-        "weather",
-        "cpu",
-        "memory",
-        "wallpapers"
+      left: 
+        [
+          # "task_view",   # If desired, you can replace the "task_view" and "home" widgets.
+          "home",
+          "windows_workspaces",
+          "komorebi_workspaces",
+          "komorebi_active_layout",  # Disabled: crashes on YASB v1.1.6 with '_komorebi_state' AttributeError
+          "taskbar", 
+          "media"
         ]
+      center: 
+        [
+          "clock"
+        ]
+      right: 
+        [
+          "wallpapers", 
+          "gpu",
+          "memory", 
+          "apps", 
+          "power_menu"
+        ]
+
 widgets:
-  active_window:
-    type: "yasb.active_window.ActiveWindowWidget"
-    options:
-      label: "{win[process][name]}"
-      label_alt: "{win[title]}"
-      label_no_window: ""
-      label_icon: true
-      label_icon_size: 14
-      max_length: 46
-      max_length_ellipsis: "..."
-      monitor_exclusive: true
-  clock:
-    type: "yasb.clock.ClockWidget"
-    options:
-      label: "{%I:%M:%S}"
-      label_alt: "{%I:%M:%S}"
-      timezones: []
-      callbacks:
-        on_left: ""
-  weather:
-    type: "yasb.weather.WeatherWidget"
-    options:
-      label: "<span>{icon}</span> {temp}"
-      label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
-      api_key:  # Get your free API key from https://www.weatherapi.com/
-      update_interval: 600
-      hide_decimal: true
-      location:  # You can use "USA Los Angeles 90006" {COUNTRY CITY ZIP_CODE}, or just city.
-      callbacks:
-        on_left: "toggle_card"
-      icons:
-        sunnyDay: "\ue30d"
-        clearNight: "\ue32b"
-        cloudyDay: "\ue312"
-        cloudyNight: "\ue311"
-        rainyDay: "\ue308"
-        rainyNight: "\ue333"
-        blizzardDay: "\udb83\udf36"
-        blizzardNight: "\udb83\udf36"
-        foggyDay: "\ue303"
-        foggyNight: "\ue346"
-        thunderstormDay: "\ue30f"
-        thunderstormNight: "\ue338"
-        default: "\uebaa"
-      weather_card:
-        blur: True
-        round_corners: True
-        round_corners_type: "normal"
-        border_color: "System"
-        alignment: "right"
-        direction: "down"
-        icon_size: 64
-        show_hourly_forecast: True # Set to False to disable hourly forecast
-        time_format: "12h" # can be 12h or 24h
-        hourly_point_spacing: 76
-        hourly_icon_size: 32 # better to set 16, 32 or 64 for better quality
-        icon_smoothing: true # should be true for smoother icon or false for sharper icon if using 16, 32 or 64 for hourly_icon_size
-        temp_line_width: 2 # can be 0 to hide the temperature line
-        current_line_color: "#8EAEE8"
-        current_line_width: 1 # can be 0 to hide the current hour line
-        current_line_style: "dot"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [ 1, 1 ]
-  power_menu:
-    type: "yasb.power_menu.PowerMenuWidget"
-    options:
-      label: "\uf011"
-      uptime: True
-      blur: False
-      blur_background: True
-      animation_duration: 200
-      button_row: 5
-      buttons:
-        shutdown: ["\uf011", "Rage Quit"]
-        restart: ["\uead2", "Oops, Reboot"]
-        signout: ["\udb80\udf43", "Dip Out"]
-        hibernate: ["\uf28e", "Bear Mode"]
-        sleep: ["\u23fe", "Nap Time"]
-        cancel: ["", "Nah, Im Good "]
-  wallpapers:
-    type: "yasb.wallpapers.WallpapersWidget"
-    options:
-      label: "<span>\udb80\udd1b</span>"
-      image_path:  # Example path to folder with images
-      change_automatically: false # Automatically change wallpaper
-      update_interval: 60 # If change_automatically is true, update interval in seconds
-      gallery:
-          enabled: true
-          blur: true
-          image_width: 220
-          image_per_page: 8
-          show_buttons: false
-          orientation: "portrait"
-          image_spacing: 8
-          lazy_load: true
-          lazy_load_delay: 80
-          lazy_load_fadein: 400
-          image_corner_radius: 20
-          enable_cache: true
-  cava:
-    type: "yasb.cava.CavaWidget"
-    options:
-      bar_height: 12
-      min_bar_height: 0
-      gradient: 1
-      reverse: 0
-      foreground: "#89b4fa"
-      gradient_color_1: '#74c7ec'
-      gradient_color_2: '#89b4fa'
-      gradient_color_3: '#cba6f7'
-      bars_number: 8
-      bar_spacing: 2
-      bar_width: 4
-      hide_empty: true
-      container_padding:
-        top: 0
-        left: 8
-        bottom: 0
-        right: 8
-  cpu:
-      type: "yasb.cpu.CpuWidget"
+  # task_view:
+  #   type: "yasb.custom.CustomWidget"
+  #   options:
+  #     label: "<span>\ue62a</span>"
+  #     label_alt: "<span>\ue62a</span>"
+  #     class_name: "task-view-widget"
+  #     callbacks:
+  #       on_left: "exec explorer.exe shell:::{3080F90E-D7AD-11D9-BD98-0000947B0257}"
+  #       on_middle: "do_nothing"
+  #       on_right: "do_nothing"
+
+  home:
+      type: "yasb.home.HomeWidget"
       options:
-        label: "{info[percent][total]:.0f}%"
-        progress_bar:
+        label: "<span>\ue62a</span>"
+        system_menu: true
+        power_menu: true
+        blur: true
+        border_color: "system"
+        round_corners_type: "normal"
+        menu_labels:
+          about: "\ue66A  About This PC"
+          system: "\uF423  System Settings"
+          task_manager: "\uf437  Task Manager"
+          hibernate: "\uf28e  Hibernate"
+          sleep: "\u23fe  Sleep"
+          restart: "\uead2  Restart"
+          shutdown: "\uf011  Shutdown"
+          lock: "\uea75  Lock"
+          logout: "\udb80\udf43  Logout"
+        menu_list:
+          - { title: "\uE617  User Home", path: "~" }
+          - { title: "\udb80\udd20  Download", path: "~\\Downloads" }
+          - { title: "\udb80\ude1a  Documents", path: "~\\Documents" }
+          - { title: "\uf03e  Pictures", path: "~\\Pictures" }
+
+  windows_workspaces:
+      type: "yasb.windows_desktops.WorkspaceWidget"
+      options:
+        label_workspace_btn: "\udb81\udc3d"
+        label_workspace_active_btn: "\udb81\udc3e"
+        btn_shadow:
           enabled: true
-          position: "left"
-          size: 16
-          thickness: 3
-          color: "#89dceb"
-          background_color: "#1e1e2e"
-          animation: true 
+          color: "black"
+          radius: 3
+          offset: [ 1, 1 ]
+
+  taskbar:
+      type: "yasb.taskbar.TaskbarWidget"
+      options:
+        icon_size: 16
         animation:
           enabled: true
-          type: FadeInOut
-          duration: 200
-        update_interval: 2000
+        preview:
+          enabled: true
+          width: 250
+          delay: 400
+          padding: 12
         callbacks:
-          on_right: "do_nothing"
+          on_middle: "close_app"
+
+  media:
+      type: "yasb.media.MediaWidget"
+      options:
+        label: "<span>\udb80\udf87</span> {title}"
+        label_alt: "<span>\udb80\udf87</span> {title} - {artist}"
+        hide_empty: true
+        callbacks:
+          on_left: "toggle_media_menu"
+          on_middle: "do_nothing"
+          on_right: "toggle_label"
+        max_field_size:
+          label: 45
+          label_alt: 80
+        show_thumbnail: false
+        controls_only: false
+        controls_left: false
+        thumbnail_alpha: 80
+        thumbnail_padding: 8
+        thumbnail_corner_radius: 16
+        icons:
+          prev_track: "\udb81\udcae"
+          next_track: "\udb81\udcad"
+          play: "\udb81\udc0a"
+          pause: "\udb80\udfe4"
+        media_menu:
+          blur: true
+          round_corners: true
+          round_corners_type: "normal"
+          alignment: "right"
+          direction: "down"
+          offset_top: 6
+          offset_left: 10
+          thumbnail_corner_radius: 8
+          thumbnail_size: 120
+          max_title_size: 80
+          max_artist_size: 20
+          show_source: true
+        media_menu_icons:
+          play: "\ue768"
+          pause: "\ue769"
+          prev_track: "\ue892"
+          next_track: "\ue893"
+        label_shadow:
+          enabled: true
+          color: "black"
+          radius: 3
+          offset: [1, 1]
+
+  clock:
+      type: "yasb.clock.ClockWidget"
+      options:
+        label: "<span>\uf017</span> {%a %d %b %H:%M}"
+        label_alt: "{%A %d %B %Y %H:%M:%S}"
+        # locale: 'en_EN'  # Language for date, you can set your own, example fr_FR
+        timezones: []  # Looking up time zone info from registry
+        # timezones: ["America/Montreal"]
+        calendar:
+          blur: true
+          round_corners: true
+          round_corners_type: "normal"
+          border_color: "system"
+          alignment: "center"
+          direction: "down"
+          show_holidays: true
+          show_week_numbers: true
+          holiday_color: "#FF6464"
+  gpu:
+      type: "yasb.gpu.GpuWidget"
+      options:
+        label: "<span>\uf4bc</span> {info[temp]}°C"
+        label_alt: "<span>\uf4bc</span> {info[temp]}°C | {info[mem_used]} / {info[mem_total]}"
+        update_interval: 2000
+        gpu_thresholds:
+          low: 25
+          medium: 50
+          high: 90
+        histogram_icons:
+          - "\u2581"  # 0%
+          - "\u2581"  # 10%
+          - "\u2582"  # 20%
+          - "\u2583"  # 30%
+          - "\u2584"  # 40%
+          - "\u2585"  # 50%
+          - "\u2586"  # 60%
+          - "\u2587"  # 70%
+          - "\u2588"  # 80%+
+        histogram_num_columns: 8
+        callbacks:
           on_left: "do_nothing"
-  glazewm_workspaces:
-    type: "glazewm.workspaces.GlazewmWorkspacesWidget"
-    options:
-      # Offline behavior (matching komorebi's label_offline and hide_if_offline)
-      offline_label: "Hey Buddy, GlazeWM is Offline"
-      hide_if_offline: false
-      
-      # Workspace display labels (matching komorebi's label_workspace_btn and label_workspace_active_btn)
-      populated_label: "\udb85\udcfc"
-      empty_label: "\udb85\udcfc"
-      active_populated_label: "\udb85\udcfb"
-      active_empty_label: "\udb85\udcfb"
-      
-      # Workspace management (matching komorebi's hide_empty_workspaces)
-      hide_empty_workspaces: false
-      
-      # Server connection
-      glazewm_server_uri: "ws://localhost:6123"
-      
-      # Additional GlazeWM-specific options (keeping defaults)
-      enable_scroll_switching: true
-      reverse_scroll_direction: true
-  glazewm_tiling_direction:
-    type: "glazewm.tiling_direction.GlazewmTilingDirectionWidget"
-    options:
-      horizontal_label: "\ueb56"
-      vertical_label: "\ueb57"
-      btn_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [ 1, 1 ]
+          on_middle: "exec cmd /c Taskmgr"
+          on_right: "toggle_label"
+
   memory:
-    type: "yasb.memory.MemoryWidget"
-    options:
-      label: "{virtual_mem_percent}%"
-      update_interval: 5000
-      progress_bar:
-        enabled: true
-        size: 16
-        thickness: 3
-        position: left
-        color: "#cba6f7"
-        background_color: "#1e1e2e"
-        animation: True
-      animation:
-        enabled: true
-        type: FadeInOut
-        duration: 200 
-      callbacks:
-        on_left: "do_nothing"
-      memory_thresholds:
-        low: 25
-        medium: 50
-        high: 90
+      type: "yasb.memory.MemoryWidget"
+      options:
+        label: "<span>\uefc5</span> {virtual_mem_used} / {virtual_mem_total}"
+        label_alt: "<span>\uf4bc</span> VIRT: {virtual_mem_percent}% SWAP: {swap_mem_percent}%"
+        update_interval: 5000
+        callbacks:
+          on_left: "do_nothing"
+          on_middle: "exec cmd /c Taskmgr"
+          on_right: "toggle_label"
+        memory_thresholds:
+          low: 25
+          medium: 50
+          high: 90
+        histogram_icons:
+          - "\u2581"  # 0%
+          - "\u2581"  # 10%
+          - "\u2582"  # 20%
+          - "\u2583"  # 30%
+          - "\u2584"  # 40%
+          - "\u2585"  # 50%
+          - "\u2586"  # 60%
+          - "\u2587"  # 70%
+          - "\u2588"  # 80%+
+        label_shadow:
+          enabled: true
+          color: "black"
+          radius: 3
+          offset: [ 1, 1 ]
+
+  apps:
+      type: "yasb.applications.ApplicationsWidget"
+      options:
+        label: "{data}"
+        app_list:
+          # - { icon: "\uf0a2", launch: "notification_center" }
+          # - { icon: "\ueb51", launch: "quick_settings" }
+          - { icon: "\uf46a", launch: "cmd /c start ms-settings:windowsupdate" }
+          # - { icon: "\uf422", launch: "search" }
+          - { icon: "\ueb03", launch: "cmd /c Taskmgr", name: "Task Manager" }
+          - { icon: "\uf489", launch: "wt", name: "Windows Terminal" }
+          - { icon: "\udb82\ude1e", launch: "cmd /c code", name: "VS Code" }
+          - { icon: "\uf1b6", launch: "C:/Program Files (x86)/Steam/Steam.exe", name: "Steam" }
+        container_padding:
+          top: 0
+          left: 8
+          bottom: 0
+          right: 8
+
+  power_menu:
+      type: "yasb.power_menu.PowerMenuWidget"
+      options:
+        label: "\ue7e8"
+        uptime: true
+        blur: false
+        blur_background: true
+        animation_duration: 300  # Milliseconds
+        button_row: 3  # Number of buttons in row, min 1 max 5
+        buttons:
+          lock: ["\uea75", "Lock"]
+          signout: ["\udb80\udf43", "Sign out"]
+          shutdown: ["\uf011", "Shut Down"]
+          restart: ["\uead2", "Restart"]
+          hibernate: ["\uf28e", "Hibernate"]
+          cancel: ["\udb81\udf3a", "Cancel"]
   komorebi_workspaces:
     type: "komorebi.workspaces.WorkspaceWidget"
     options:
@@ -294,3 +322,23 @@ widgets:
         on_left: "next_layout"
         on_middle: "toggle_monocle"
         on_right: "prev_layout"
+  wallpapers:
+    type: "yasb.wallpapers.WallpapersWidget"
+    options:
+      label: "<span>\udb80\udd1b</span>"
+      image_path: C:\Users\kurt lampa\Pictures\Wallpaper # Example path to folder with images
+      change_automatically: false # Automatically change wallpaper
+      update_interval: 60 # If change_automatically is true, update interval in seconds
+      gallery:
+          enabled: true
+          blur: true
+          image_width: 220
+          image_per_page: 8
+          show_buttons: false
+          orientation: "portrait"
+          image_spacing: 8
+          lazy_load: true
+          lazy_load_delay: 80
+          lazy_load_fadein: 400
+          image_corner_radius: 20
+          enable_cache: true
