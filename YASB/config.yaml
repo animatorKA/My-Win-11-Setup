@@ -41,6 +41,8 @@ bars:
           "home",
           "windows_workspaces",
           "komorebi_workspaces",
+          "glazewm_workspaces",
+          "glazewm_tiling_direction",
           "komorebi_active_layout",  # Disabled: crashes on YASB v1.1.6 with '_komorebi_state' AttributeError
           "taskbar", 
           "media"
@@ -325,8 +327,8 @@ widgets:
   wallpapers:
     type: "yasb.wallpapers.WallpapersWidget"
     options:
-      label: "<span>\udb80\udd1b</span>"
-      image_path: C:\Users\kurt lampa\Pictures\Wallpaper # Example path to folder with images
+      label: "<span>\udb83\ude09</span>"
+      image_path: C:\Users\kurt lampa\Pictures\Wallpapers # Example path to folder with images
       change_automatically: false # Automatically change wallpaper
       update_interval: 60 # If change_automatically is true, update interval in seconds
       gallery:
@@ -342,3 +344,40 @@ widgets:
           lazy_load_fadein: 400
           image_corner_radius: 20
           enable_cache: true
+  glazewm_workspaces:
+    type: "glazewm.workspaces.GlazewmWorkspacesWidget"
+    options:
+      # Offline behavior (matching komorebi's label_offline and hide_if_offline)
+      offline_label: "GlazeWM Offline"
+      hide_if_offline: true
+      
+      # Workspace display labels (matching komorebi's label_workspace_btn and label_workspace_active_btn)
+      populated_label: "\udb85\udcfc"
+      empty_label: "\udb85\udcfc"
+      active_populated_label: "\udb85\udcfb"
+      active_empty_label: "\udb85\udcfb"
+      
+      # Workspace management (matching komorebi's hide_empty_workspaces)
+      hide_empty_workspaces: false
+      
+      # Server connection
+      glazewm_server_uri: "ws://localhost:6123"
+      
+      # Additional GlazeWM-specific options (keeping defaults)
+      enable_scroll_switching: true
+      reverse_scroll_direction: true
+      container_padding:
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+  glazewm_tiling_direction:
+    type: "glazewm.tiling_direction.GlazewmTilingDirectionWidget"
+    options:
+      horizontal_label: "\udb81\udce1"
+      vertical_label: "\udb81\udce2"
+      btn_shadow:
+        enabled: true
+        color: "black"
+        radius: 3
+        offset: [ 1, 1 ]
