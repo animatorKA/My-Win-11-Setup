@@ -16,7 +16,9 @@
 ## 🖼️ Screenshot
 
 <p align="center">
-  <img src="Screenshots/Screenshot 2026-04-21 161000.png" alt="Desktop Preview" width="100%" />
+  <img src="Screenshots/Screenshot 2026-05-04 223346.png" alt="Desktop Preview" width="100%" />
+  <img src="Screenshots/Screenshot 2026-05-04 223358.png" alt="Desktop Preview" width="100%" />
+  <img src="Screenshots/Screenshot 2026-05-04 223429.png" alt="Desktop Preview" width="100%" />
 </p>
 
 ---
